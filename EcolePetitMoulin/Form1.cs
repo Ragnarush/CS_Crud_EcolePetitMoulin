@@ -14,7 +14,7 @@ namespace EcolePetitMoulin
         public int pos = -1;
         // Longueur de l'enregistrement
         public const int Longueur = 209;
-        // indique líaction nous allons faire sur le fichier
+        // indique l‚Äôaction nous allons faire sur le fichier
         public string action = "";
         // Indique le nombre de membres contenu dans le fichier
         public int nb_eleves = 0;
@@ -35,18 +35,18 @@ namespace EcolePetitMoulin
             try
             {
                 FileStream fs = new FileStream(NomFichier, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
-                // Ici on dÈtermine le nombre de membres dans le fichier delon la longueur du fichier / par la longueur d'un eleve
+                // Ici on d√©termine le nombre de membres dans le fichier delon la longueur du fichier / par la longueur d'un eleve
                 nb_eleves = (int)fs.Length / Longueur;
                 // on ferme le filestream
                 fs.Close();
 
                 if (nb_eleves > 0) //   commentaire PRUDENT POUR ALEX
                 {
-                    // DÈbarrer
+                    // D√©barrer
                     grBoxNavigation.Enabled = true;
                     btnMiseAjour.Enabled = true;
                     btnDestruction.Enabled = true;
-                    // RÈcupÈrer le 1er membre du fichier
+                    // R√©cup√©rer le 1er membre du fichier
                     pos = 0;
                     RecupererEleve(pos);
                 }
@@ -59,7 +59,7 @@ namespace EcolePetitMoulin
         }
 
 
-        // ************************** M…THODES **************************
+        // ************************** M√âTHODES **************************
         public void RecupererEleve(int p)
         {
             try
@@ -96,7 +96,7 @@ namespace EcolePetitMoulin
 
                         txBoxNoId.Text = br.ReadString();
 
-                        //Ecrire tout les champs associÈ en ordre 
+                        //Ecrire tout les champs associ√© en ordre 
                         btn.Text = "Eleve " + (p + 1).ToString() + " de " + nb_eleves.ToString();
                     }
                 }
@@ -107,7 +107,7 @@ namespace EcolePetitMoulin
             }
         }
         private void BarrerDebarrer(bool option) 
-        {   // option ‡ true on dÈbarre sinon on barre
+        {   // option √† true on d√©barre sinon on barre
             numUpDownIndex.Enabled = false;
             grBoxInfoEleves.Enabled = option;
             btnEnregistrer.Enabled = option;
@@ -154,23 +154,23 @@ namespace EcolePetitMoulin
         {
             err1.Clear(); // Efface les messages d'erreurs
             bool valide = true;
-            // 1) VÈrifier si le prÈnom est ok
+            // 1) V√©rifier si le pr√©nom est ok
             if (txBoxPrenom.Text.Trim() == "" || txBoxPrenom.Text.Length < 2)
             {
                 valide = false;
-                err1.SetError(txBoxPrenom, "PrÈnom obligatoire et 2 caractËres minimum");
+                err1.SetError(txBoxPrenom, "Pr√©nom obligatoire et 2 caract√®res minimum");
             }
-            // 2) VÈrifier si le nom est ok
+            // 2) V√©rifier si le nom est ok
             if (txBoxNom.Text.Trim() == "" || txBoxNom.Text.Length < 2)
             {
                 valide = false;
-                err1.SetError(txBoxNom, "Nom obligatoire et 2 caractËres minimum");
+                err1.SetError(txBoxNom, "Nom obligatoire et 2 caract√®res minimum");
             }
-            // 3) VÈrifier si le TÈlÈphone est ok
+            // 3) V√©rifier si le T√©l√©phone est ok
             if (mskBoxTelephone.MaskFull == false)
             {
                 valide = false;
-                err1.SetError(mskBoxTelephone, "TÈlÈphone obligatoire");
+                err1.SetError(mskBoxTelephone, "T√©l√©phone obligatoire");
             }
             if (mskTxBoxDate.Text == "")
             {
@@ -187,17 +187,17 @@ namespace EcolePetitMoulin
             if (txBoxNoCivique.Text.Trim() == "" || txBoxNoCivique.Text.Length < 2)
             {
                 valide = false;
-                err1.SetError(txBoxNoCivique, "Adresse obligatoire et 2 caractËres minimum");
+                err1.SetError(txBoxNoCivique, "Adresse obligatoire et 2 caract√®res minimum");
             }
             if (txBoxNomDeRue.Text.Trim() == "" || txBoxNomDeRue.Text.Length < 2)
             {
                 valide = false;
-                err1.SetError(txBoxNomDeRue, "Adresse obligatoire et 2 caractËres minimum");
+                err1.SetError(txBoxNomDeRue, "Adresse obligatoire et 2 caract√®res minimum");
             }
             if (txBoxVille.Text.Trim() == "" || txBoxVille.Text.Length < 2)
             {
                 valide = false;
-                err1.SetError(txBoxVille, "Ville obligatoire et 2 caractËres minimum");
+                err1.SetError(txBoxVille, "Ville obligatoire et 2 caract√®res minimum");
             }
             if (mskCodePostal.MaskFull == false)
             {
@@ -216,10 +216,10 @@ namespace EcolePetitMoulin
         //{
         //    if (!e.IsValidInput) { toolTip1.ToolTipTitle = "Date invalide"; toolTip1.Show("Entrer une date valide avec le format mm/dd/yyyy.", mskTxBoxDate, 0, -20, 5000); }
         //    else
-        //    {††††††††††††††††//Now that the type has passed basic type validation, enforce more specific type rules.††††††††††††††††
+        //    {¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†//Now that the type has passed basic type validation, enforce more specific type rules.¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†¬†
         //        DateTime userDate = (DateTime)e.ReturnValue;
         //        var myDate = DateTime.Now; var newDate = myDate.AddYears(-16);
-        //        if (userDate > newDate) { toolTip1.ToolTipTitle = "Date invalide"; toolTip1.Show("Entrer une date infÈrieur ‡ cette date. L'ÈlËve est trop jeune pour s'inscrire!", mskTxBoxDate, 0, -20, 5000); e.Cancel = true; }
+        //        if (userDate > newDate) { toolTip1.ToolTipTitle = "Date invalide"; toolTip1.Show("Entrer une date inf√©rieur √† cette date. L'√©l√®ve est trop jeune pour s'inscrire!", mskTxBoxDate, 0, -20, 5000); e.Cancel = true; }
         //    }
         //}
         //
@@ -233,14 +233,14 @@ namespace EcolePetitMoulin
 
         {   // 1) ouvrir le filestream
 
-            ConcatID(); // GÈnËre le numÈro d'identification unique de l'ÈlËve 
+            ConcatID(); // G√©n√®re le num√©ro d'identification unique de l'√©l√®ve 
 
             using (FileStream fs = new FileStream(NomFichier, FileMode.Append, FileAccess.Write, FileShare.None))
             {
-                // 2) Se crÈer un BinaryWriter
+                // 2) Se cr√©er un BinaryWriter
                 using (BinaryWriter bw = new BinaryWriter(fs))
                 {
-                    // 3) On rÈcupËre les donnÈes du formulaire
+                    // 3) On r√©cup√®re les donn√©es du formulaire
                     int noIndex = (int)numUpDownIndex.Value;  // fonction pour resoudre le prob d'indexation
                     string tel = mskBoxTelephone.Text; 
                     string prenom = txBoxPrenom.Text.PadRight(15);
@@ -258,7 +258,7 @@ namespace EcolePetitMoulin
                     decimal final = numUpDownFinal.Value;
                     string noID = txBoxNoId.Text.PadRight(5);
                     
-                    // 4) ici on Ècrit dans le fichier
+                    // 4) ici on √©crit dans le fichier
                     bw.Write(noIndex);
                     bw.Write(tel);
                     bw.Write(prenom);
@@ -276,20 +276,20 @@ namespace EcolePetitMoulin
                     bw.Write(final);
                     bw.Write(noID);
                 }
-            } // 5) fermer le fichier se ferme automatiquement aprËs le using
+            } // 5) fermer le fichier se ferme automatiquement apr√®s le using
         }
 
         private void ModifierEleve()
         {   // 1) ouvrir le filestream pour membres.bin
             using (FileStream fs = new FileStream("Eleves.Bin", FileMode.Open, FileAccess.Write, FileShare.None))
             {
-                // 2) Se crÈer un BinaryWriter
+                // 2) Se cr√©er un BinaryWriter
                 using (BinaryWriter bw = new BinaryWriter(fs))
                 {
-                    // 3) DÈplacer la position dans le fichier binaire au premier octet du membre a modifier
+                    // 3) D√©placer la position dans le fichier binaire au premier octet du membre a modifier
                     fs.Seek(pos * Longueur, SeekOrigin.Begin);
 
-                    // 4) RÈcupÈrer les donnÈes du formulaire pour rÈÈcire dans le ficheir membres.bin
+                    // 4) R√©cup√©rer les donn√©es du formulaire pour r√©√©cire dans le ficheir membres.bin
                     int noIndex = (int)numUpDownIndex.Value;
                     string tel = mskBoxTelephone.Text.PadRight(14); 
                     string prenom = txBoxPrenom.Text.PadRight(15);
@@ -307,7 +307,7 @@ namespace EcolePetitMoulin
                     decimal final = numUpDownFinal.Value;
                     string noID = txBoxNoId.Text.PadRight(5);
 
-                    // 5) ici on Ècrit dans le fichier en Ècrasant les donnÈes existantes
+                    // 5) ici on √©crit dans le fichier en √©crasant les donn√©es existantes
                     bw.Write(noIndex);
                     bw.Write(tel);
                     bw.Write(prenom);
@@ -330,18 +330,18 @@ namespace EcolePetitMoulin
 
         private void EnleverEleve()
         {
-            // 1) Ouvrir le fichier membres.bin et crÈer le fichier membres.tmp
+            // 1) Ouvrir le fichier membres.bin et cr√©er le fichier membres.tmp
             using (FileStream fsSource = new FileStream(NomFichier, FileMode.Open, FileAccess.Read,
                 FileShare.None))
             using (FileStream fsDest = new FileStream(NomFichierTemp, FileMode.Create, FileAccess.Write,
                 FileShare.None))
             using (BinaryReader br = new BinaryReader(fsSource))
             {
-                // 2) CrÈer les objets de lecture et Ècriture binaire
+                // 2) Cr√©er les objets de lecture et √©criture binaire
                 
                 using (BinaryWriter bw = new BinaryWriter(fsDest))
                 {
-                    // 3) DÈclaration de variables pour la lecture
+                    // 3) D√©claration de variables pour la lecture
                     int bidon;
                     int noIndex;
                     string tel;
@@ -361,7 +361,7 @@ namespace EcolePetitMoulin
                     string noID;
 
 
-                    // 4) ItÈrer tous les membres
+                    // 4) It√©rer tous les membres
                     for (int i = 0; i < nb_eleves; i++)
                     {
 
@@ -389,7 +389,7 @@ namespace EcolePetitMoulin
                         if (noIndex != numUpDownIndex.Value)
                         {
                            
-                            // 7) …crire dans le fichier membres.tmp
+                            // 7) √âcrire dans le fichier membres.tmp
                             bw.Write(noIndex);
                             bw.Write(tel);
                             bw.Write(prenom);
@@ -411,15 +411,15 @@ namespace EcolePetitMoulin
                 }
             }
 
-            // 8) DÈtruire le fichier source membres.bin
+            // 8) D√©truire le fichier source membres.bin
             File.Delete(NomFichier);
-            // 9) DÈplacer/renommer le fichier destination membres.tmp en fichier source membres.bin
+            // 9) D√©placer/renommer le fichier destination membres.tmp en fichier source membres.bin
             File.Move(NomFichierTemp, NomFichier);
 
             // 10) Confirmer la destruction
             //nb_eleves_total = nb_eleves;    // MODIFICATION TEST
             nb_eleves--;
-            MessageBox.Show("*** Membre # " + numUpDownIndex.Value + " a ÈtÈ supprimÈ avec succËs ***");
+            MessageBox.Show("*** Membre # " + numUpDownIndex.Value + " a √©t√© supprim√© avec succ√®s ***");
 
             if (nb_eleves != 0)
                 // 11) On doit se repositionner dans le fichier sur le dernier candidat
@@ -437,7 +437,7 @@ namespace EcolePetitMoulin
             txBoxNoId.Text = concatID;
         }
 
-        // ************************** …V»NEMENTS **************************
+        // ************************** √âV√àNEMENTS **************************
 
         private void btnInscription_Click_1(object sender, EventArgs e)
         {
@@ -451,7 +451,7 @@ namespace EcolePetitMoulin
 
         private void btnEnregistrer_Click_1(object sender, EventArgs e)
         {
-            // 1) Valider si l'Ècran est bien rempli
+            // 1) Valider si l'√©cran est bien rempli
             if (ValiderEcran() == false)
             {
                 return;
@@ -460,14 +460,14 @@ namespace EcolePetitMoulin
             if (action == "AJOUT")
             {
                 AjouterEleve();
-                MessageBox.Show("*** Membre ajoutÈ avec succËs ***");
+                MessageBox.Show("*** Membre ajout√© avec succ√®s ***");
                 nb_eleves++;
                 pos = nb_eleves - 1;
             }
             else if (action == "MODIF")
             {
                 ModifierEleve();
-                MessageBox.Show("*** Membre modifiÈ avec succËs ***");
+                MessageBox.Show("*** Membre modifi√© avec succ√®s ***");
             }
             btnAnnuler.PerformClick(); // PerformClick simule un clic du bouton
 
@@ -601,11 +601,6 @@ namespace EcolePetitMoulin
             {
                 this.Close();
             }
-            else
-            {
-                // Do something  
-            }
-
         }
     }
 }
