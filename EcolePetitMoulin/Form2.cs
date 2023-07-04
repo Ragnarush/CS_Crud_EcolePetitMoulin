@@ -48,11 +48,10 @@ namespace EcolePetitMoulin
             {
                 FileStream fs = new FileStream(myForm1.NomFichier, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
                 // Ici on détermine le nombre de membres dans le fichier delon la longueur du fichier / par la longueur d'un eleve
-                nombreDeleve = (int)fs.Length / Longueur;   // il interfere avec la variable du form 1 ,...risquer
+                nombreDeleve = (int)fs.Length / Longueur;
                 // on ferme le filestream
                 fs.Close();
                 lbNbrEleve.Text = nombreDeleve.ToString();
-
 
                 if (nombreDeleve > 0) 
                 {
@@ -165,15 +164,11 @@ namespace EcolePetitMoulin
 
         private void txBoxRecherche_TextChanged_1(object sender, EventArgs e)
         { 
-
             string searchVal = txBoxRecherche.Text.ToLower();
             foreach (ListViewItem item in listView1.Items)
             {
-                //enleve ca pis ca marche
                 foreach (ListViewItem.ListViewSubItem subSearch in item.SubItems)
                 {
-                    // IMPORTANT *** ColumnHeader *** IMPORTANT
-                   // move condition here
                    if (searchVal != "" && subSearch.Text.ToLower().Contains(searchVal) == true)
                    {
                        subSearch .BackColor = Color.Coral;    
@@ -183,10 +178,8 @@ namespace EcolePetitMoulin
                        subSearch.BackColor = Color.White;
                    }
                 }
-
                 item.UseItemStyleForSubItems = false;
             }
-            
         }
 
         public void RefreshForm2(Form2 myform2)
